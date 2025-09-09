@@ -34,11 +34,14 @@ export default function Listagem() {
 		<div className={styles.container}>
 			<div className={styles.cards}>
 				<h1 className={styles.title}>Casais/Sorvetes Cadastrados</h1>
-				<div className={styles.button}>
-					<button onClick={buscarCasaisESabores} disabled={loading} className={styles.button}>
-						{loading ? "Carregando..." : "🔍Buscar Casais e Sabores"}
-					</button>
-				</div>
+						<div className={styles.button} style={{display:'flex',gap:'1rem'}}>
+							<button onClick={buscarCasaisESabores} disabled={loading} className={styles.button}>
+								{loading ? "Carregando..." : "🔍Buscar Casais e Sabores"}
+							</button>
+							<button onClick={() => window.location.href='/criacao'} className={styles.button}>
+								Criar Casal
+							</button>
+						</div>
 			</div>
 			<div className={styles.cardss}>
 				{casais.map((casal) => (
