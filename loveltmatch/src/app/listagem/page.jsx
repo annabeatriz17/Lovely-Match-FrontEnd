@@ -4,71 +4,54 @@ import axios from "axios";
 import styles from "./Listagem.module.css";
 import { useRouter } from "next/navigation";
 
+
 export default function Listagem() {
 	const [casais, setCasais] = useState([]);
 	const [sabores, setSabores] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
 
-	const buscarCasaisESabores = async () => {
+	async function buscarCasaisESabores() {
 		setLoading(true);
 		try {
-			const [casaisRes, saboresRes] = await Promise.all([
-				axios.get("http://localhost:3000/api/couples"),
-				axios.get("http://localhost:3000/api/flavors")
-			]);
+			const casaisRes = await axios.get("http://localhost:3000/api/couples");
+			const saboresRes = await axios.get("http://localhost:3000/api/flavors");
 			setCasais(casaisRes.data);
 			setSabores(saboresRes.data);
-		} catch (error) {
-			console.error("Erro ao buscar casais/sabores:", error);
-		} finally {
-			setLoading(false);
+		} catch (e) {
+			alert("Erro ao buscar dados");
 		}
-	};
-
-	const handleCardClick = (id) => {
-		router.push(`/detalhes/${id}`);
-	};
+		setLoading(false);
+	}
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.cards}>
-				<h1 className={styles.title}>Casais/Sorvetes Cadastrados</h1>
-						<div className={styles.button} style={{display:'flex',gap:'1rem'}}>
-							<button onClick={buscarCasaisESabores} disabled={loading} className={styles.button}>
-								{loading ? "Carregando..." : "🔍Buscar Casais e Sabores"}
-							</button>
-							<button onClick={() => window.location.href='/criacao'} className={styles.button}>
-								Criar Casal
-							</button>
-						</div>
-			</div>
-			<div className={styles.cardss}>
-				{casais.map((casal) => (
-					<div
-						key={casal.id}
-						className={styles.cardSorvete}
-						onClick={() => handleCardClick(casal.id)}
-					>
-						<h3 className={styles.cardTitle}>{casal.name}</h3>
-						<div className={styles.cardText}>
-							<p className={styles.cardInfo}><strong>Descrição:</strong> {casal.description}</p>
-							<p className={styles.cardInfo}><strong>Foto:</strong> {casal.photo}</p>
-							<p className={styles.cardInfo}><strong>Data de criação:</strong> {casal.created_at}</p>
-						</div>
-						<div className={styles.cardText}>
-							<h4>Sabores Inspirados:</h4>
+			<div className={styles.container}>
+				<h2 className={styles.titulo}>Casais/Sorvetes</h2>
+				<div className={styles.botoes}>
+					<button onClick={buscarCasaisESabores} disabled={loading}>
+						{loading ? "Carregando..." : "Buscar"}
+					</button>
+					<button onClick={() => router.push('/criacao')}>Criar Casal</button>
+				</div>
+				<hr />
+				{casais.map(casal => (
+					<div key={casal.id} className={styles.casal}>
+						<h3>{casal.name}</h3>
+						<p><b>Descrição:</b> {casal.description}</p>
+						<p><b>Foto:</b> {casal.photo}</p>
+						<p><b>Data de criação:</b> {casal.created_at}</p>
+						<div className={styles.sabores}>
+							<b>Sabores Inspirados:</b>
 							{sabores.filter(sabor => sabor.couple_inspiration === casal.name).map(sabor => (
-								<div key={sabor.id} className={styles.saborInfo}>
-									<p><strong>Nome:</strong> {sabor.name}</p>
-									<p><strong>Descrição:</strong> {sabor.description}</p>
-									<p><strong>Data de criação:</strong> {sabor.created_at}</p>
+								<div key={sabor.id} className={styles.sabor}>
+									<p><b>Nome:</b> {sabor.name}</p>
+									<p><b>Descrição:</b> {sabor.description}</p>
+									<p><b>Data de criação:</b> {sabor.created_at}</p>
 								</div>
 							))}
 						</div>
 					</div>
 				))}
 			</div>
-		</div>
-	)
+	);
 }
