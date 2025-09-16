@@ -1,57 +1,58 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Listagem.module.css";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
 export default function Listagem() {
-	const [casais, setCasais] = useState([]);
-	const [sabores, setSabores] = useState([]);
-	const [loading, setLoading] = useState(false);
-	const router = useRouter();
+    const [sabores, setSabores] = useState([]);
+    const [erro, setErro] = useState("");
 
-	async function buscarCasaisESabores() {
-		setLoading(true);
-		try {
-			const casaisRes = await axios.get("http://localhost:3000/api/couples");
-			const saboresRes = await axios.get("http://localhost:3000/api/flavors");
-			setCasais(casaisRes.data);
-			setSabores(saboresRes.data);
-		} catch (e) {
-			alert("Erro ao buscar dados");
-		}
-		setLoading(false);
-	}
+    useEffect(() => {
+        if (!API_BASE) {
+            setErro("API_BASE não está definida. Verifique seu arquivo .env.local.");
+            return;
+        }
+        async function fetchSabores() {
+            try {
+                const response = await axios.get(`${API_BASE}/api/flavors`);
+                setSabores(response.data);
+            } catch (error) {
+                setErro("Erro ao buscar os sabores. Verifique se a API está rodando.");
+                console.error("Erro ao buscar os sabores:", error);
+            }
+        }
+        fetchSabores();
+    }, []);
 
-	return (
-			<div className={styles.container}>
-				<h2 className={styles.titulo}>Casais/Sorvetes</h2>
-				<div className={styles.botoes}>
-					<button onClick={buscarCasaisESabores} disabled={loading}>
-						{loading ? "Carregando..." : "Buscar"}
-					</button>
-					<button onClick={() => router.push('/criacao')}>Criar Casal</button>
-				</div>
-				<hr />
-				{casais.map(casal => (
-					<div key={casal.id} className={styles.casal}>
-						<h3>{casal.name}</h3>
-						<p><b>Descrição:</b> {casal.description}</p>
-						<p><b>Foto:</b> {casal.photo}</p>
-						<p><b>Data de criação:</b> {casal.created_at}</p>
-						<div className={styles.sabores}>
-							<b>Sabores Inspirados:</b>
-							{sabores.filter(sabor => sabor.couple_inspiration === casal.name).map(sabor => (
-								<div key={sabor.id} className={styles.sabor}>
-									<p><b>Nome:</b> {sabor.name}</p>
-									<p><b>Descrição:</b> {sabor.description}</p>
-									<p><b>Data de criação:</b> {sabor.created_at}</p>
-								</div>
-							))}
-						</div>
-					</div>
-				))}
-			</div>
-	);
+    if (erro) {
+        return <div className={styles.container}><p style={{color: "red"}}>{erro}</p></div>;
+    }
+
+    return (
+        <div className={styles.container}>
+            <h2 className={styles.titulo}>Sabores Cadastrados</h2>
+            <div className={styles.casal}>
+                {sabores.length === 0 && <p>Nenhum sabor cadastrado.</p>}
+                {sabores.map((sabor) => (
+                    <div key={sabor.id} className={styles.sabor}>
+                        {sabor.photo && (
+                            <Image
+                                src={`${API_BASE}/uploads/${sabor.photo}`}
+                                alt={sabor.name}
+                                width={300}
+                                height={300}
+                                className={styles.saborImage}
+                                unoptimized
+                            />
+                        )}
+                        <h3 className={styles.saborName}>{sabor.name}</h3>
+                        <p className={styles.saborDescription}>{sabor.description}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 }
