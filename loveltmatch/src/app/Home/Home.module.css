@@ -77,6 +77,144 @@
   font-size: 0.9rem;
 }
 
+
+.carousel {
+  margin: 40px 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.carouselIndicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.indicator.active {
+  background: white;
+}
+
+.carouselInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carouselItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.carouselItem.active {
+  opacity: 1;
+}
+
+.carouselImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carouselCaption {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 30px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  max-width: 80%;
+}
+
+.carouselTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+}
+
+.carouselDescription {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.carouselControlPrev,
+.carouselControlNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.carouselControlPrev:hover,
+.carouselControlNext:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carouselControlPrev {
+  left: 20px;
+}
+
+.carouselControlNext {
+  right: 20px;
+}
+
+.carouselControlIcon {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (max-width: 768px) {
   .title {
     font-size: 2rem;
@@ -88,5 +226,43 @@
   
   .cards {
     grid-template-columns: 1fr;
+  }
+
+  .carouselContainer {
+    height: 50vh;
+  }
+
+  .carouselInner {
+    height: 100%;
+  }
+
+  .carouselControlPrev,
+  .carouselControlNext {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carouselControlPrev {
+    left: 10px;
+  }
+
+  .carouselControlNext {
+    right: 10px;
+  }
+
+  .carouselCaption {
+    bottom: 20px;
+    padding: 15px 20px;
+    max-width: 90%;
+  }
+
+  .carouselTitle {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .carouselDescription {
+    font-size: 0.9rem;
+    display: none;
   }
 }
