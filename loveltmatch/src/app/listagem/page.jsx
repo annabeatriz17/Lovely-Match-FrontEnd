@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Listagem.module.css";
 import Image from "next/image";
+import Header from "../components/Header";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
 const SERVER_BASE = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
@@ -36,6 +37,7 @@ export default function Listagem() {
 
     return (
         <div className={styles.container}>
+            <Header />
             <h2 className={styles.titulo}>Sabores de Sorvetes</h2>
             <div className={styles.casal}>
                 {sabores.length === 0 && <p>Nenhum sabor cadastrado.</p>}
