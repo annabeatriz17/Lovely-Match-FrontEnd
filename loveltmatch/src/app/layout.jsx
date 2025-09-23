@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-    title: "Lovely Match",
-    description: "Projeto Final",
+    title: "LovelyMatch - Sorveteria Artesanal",
+    description: "A melhor sorveteria artesanal da cidade. Sabores únicos e especiais.",
     icons: {
         icon: "/icons/favicon.ico",
     },
@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html>
+        <html lang="pt-BR">
             <body>{children}</body>
         </html>
     );

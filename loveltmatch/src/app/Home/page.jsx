@@ -1,30 +1,14 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "./Home.module.css";
+import Header from "../components/Header";
+
 
 export default function Home() {
     return (
         <div className={styles.container}>
-            <header className={styles.header}>
-                <div className={styles.headercontainer}>
-                        <Image
-                            src="/Logo-lovelymatch.png"
-                            alt="Logo LovelyMatch"
-                            width={200}
-                            height={150}
-                            className={styles.logoImg}
-                            priority
-                        />
-                    <nav className={styles.nav}>
-                        <Link href="/" className={styles.navLink}>Início</Link>
-                        <Link href="/listagem" className={styles.navLink}>Sabores</Link>
-                        <Link href="/sobre" className={styles.navLink}>Sobre</Link>
-                        <Link href="/criacao" className={styles.ctaLink}>Criar Sabor</Link>
-                    </nav>
-                </div>
-            </header>
-            <main className={styles.container}>
+            <Header />
+            <main className={styles.content}>
                 <section className={styles.card}>
                     <h1 className={styles.title}>Sorveteria LovelyMatch</h1>
                     <p className={styles.subtitle}>

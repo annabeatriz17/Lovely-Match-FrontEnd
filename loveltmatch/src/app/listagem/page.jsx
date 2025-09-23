@@ -36,7 +36,7 @@ export default function Listagem() {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.titulo}>Sabores Cadastrados</h2>
+            <h2 className={styles.titulo}>Sabores de Sorvetes</h2>
             <div className={styles.casal}>
                 {sabores.length === 0 && <p>Nenhum sabor cadastrado.</p>}
                 {sabores.map((sabor) => (
