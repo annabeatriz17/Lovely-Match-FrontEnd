@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import styles from "./Criacao.module.css";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function CriacaoCasal() {
     const [name, setName] = useState("");
@@ -17,7 +18,7 @@ export default function CriacaoCasal() {
         e.preventDefault();
         setMensagem("");
         try {
-            await axios.post("http://localhost:3000/api/couples", { name, description, photo });
+            await axios.post(`${API_BASE}/couples`, { name, description, photo });
             setMensagem("Casal criado!");
             setName("");
             setDescription("");

@@ -4,7 +4,8 @@ import axios from "axios";
 import styles from "./Listagem.module.css";
 import Image from "next/image";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
+const SERVER_BASE = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
 export default function Listagem() {
     const [sabores, setSabores] = useState([]);
@@ -17,8 +18,10 @@ export default function Listagem() {
         }
         async function fetchSabores() {
             try {
-                const response = await axios.get(`${API_BASE}/api/flavors`);
+                const response = await axios.get(`${API_BASE}/flavors`);
                 setSabores(response.data);
+                console.log("Sabores carregados:", response.data);
+                console.log("SERVER_BASE:", SERVER_BASE);
             } catch (error) {
                 setErro("Erro ao buscar os sabores. Verifique se a API está rodando.");
                 console.error("Erro ao buscar os sabores:", error);
@@ -40,7 +43,7 @@ export default function Listagem() {
                     <div key={sabor.id} className={styles.sabor}>
                         {sabor.photo && (
                             <Image
-                                src={`${API_BASE}/uploads/${sabor.photo}`}
+                                src={`${SERVER_BASE}/uploads/${sabor.photo}`}
                                 alt={sabor.name}
                                 width={300}
                                 height={300}
@@ -48,8 +51,8 @@ export default function Listagem() {
                                 unoptimized
                             />
                         )}
-                        <h3 className={styles.saborName}>{sabor.name}</h3>
-                        <p className={styles.saborDescription}>{sabor.description}</p>
+                        <h3 className={styles.saborName}>Nome: {sabor.name}</h3>
+                        <p className={styles.saborDescription}>Descrição: {sabor.description}</p>
                     </div>
                 ))}
             </div>
