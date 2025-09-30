@@ -32,32 +32,34 @@ export default function Listagem() {
     }, []);
 
     if (erro) {
-        return <div className={styles.container}><p style={{color: "red"}}>{erro}</p></div>;
+        return <div className={styles.container}><p style={{ color: "red" }}>{erro}</p></div>;
     }
 
     return (
         <div className={styles.container}>
             <Header />
-            <h2 className={styles.titulo}>Sabores de Sorvetes</h2>
-            <div className={styles.casal}>
-                {sabores.length === 0 && <p>Nenhum sabor cadastrado.</p>}
-                {sabores.map((sabor) => (
-                    <div key={sabor.id} className={styles.sabor}>
-                        {sabor.photo && (
-                            <Image
-                                src={`${SERVER_BASE}/uploads/${sabor.photo}`}
-                                alt={sabor.name}
-                                width={300}
-                                height={300}
-                                className={styles.saborImage}
-                                unoptimized
-                            />
-                        )}
-                        <h3 className={styles.saborName}>Nome: {sabor.name}</h3>
-                        <p className={styles.saborDescription}>Descrição: {sabor.description}</p>
-                    </div>
-                ))}
-            </div>
+            <main className={styles.content}>
+                <h1 className={styles.title}>Sabores de Sorvetes</h1>
+                <div className={styles.casal}>
+                    {sabores.length === 0 && <p>Nenhum sabor cadastrado.</p>}
+                    {sabores.map((sabor) => (
+                        <div key={sabor.id} className={styles.sabor}>
+                            {sabor.photo && (
+                                <Image
+                                    src={`${SERVER_BASE}/uploads/${sabor.photo}`}
+                                    alt={sabor.name}
+                                    width={300}
+                                    height={300}
+                                    className={styles.saborImage}
+                                    unoptimized
+                                />
+                            )}
+                            <h3 className={styles.saborName}>Nome: {sabor.name}</h3>
+                            <p className={styles.saborDescription}>Descrição: {sabor.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </main>
         </div>
     );
 }
