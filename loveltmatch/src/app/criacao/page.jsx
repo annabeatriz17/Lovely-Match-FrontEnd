@@ -34,7 +34,7 @@ export default function CriacaoCasal() {
             <Header />
             <main className={styles.content}>
                 <h2 className={styles.title}>Criar Sabor do Casal</h2>
-                <p className={styles.helper}>Cadastre um novo sabor que representa a combinação (casal) desejada.</p>
+                <p className={styles.description}>Cadastre um novo sabor que representa a combinação (casal) desejada.</p>
                 <div className={styles.campocreate}>
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <input
