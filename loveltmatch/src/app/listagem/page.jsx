@@ -1,9 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./Listagem.module.css";
 import Image from "next/image";
+import styles from "./Listagem.module.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
 const SERVER_BASE = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
@@ -54,12 +55,13 @@ export default function Listagem() {
                                     unoptimized
                                 />
                             )}
-                            <h3 className={styles.saborName}>Nome: {sabor.name}</h3>
-                            <p className={styles.saborDescription}>Descrição: {sabor.description}</p>
+                            <h3 className={styles.namesabor}>Nome: {sabor.name}</h3>
+                            <p className={styles.descriptionsabor}>Descrição: {sabor.description}</p>
                         </div>
                     ))}
                 </div>
             </main>
+            <Footer />
         </div>
     );
 }

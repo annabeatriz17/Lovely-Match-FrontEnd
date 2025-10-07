@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Pacifico', cursive;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+.description {
+    text-align: justify;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.containerForm {
+    background: #ffaec9;
+    width: 100%;
+    max-width: 600px;  
+    min-height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    margin-bottom: 60px;
+    padding: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form input,
+.form textarea {
+    margin-bottom: 16px;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    resize: vertical;
+    width: 35rem;
+    box-sizing: border-box;
+}
+
+.form textarea {
+    min-height: 120px;
+}
+
+.form button {
+    padding: 10px 0;
+    background: #e75480;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.form button:hover {
+    background: #d13f6c;
+}

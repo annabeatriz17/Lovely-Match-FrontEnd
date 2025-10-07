@@ -10,7 +10,7 @@ export default function Home() {
             <Header />
             <main className={styles.content}>
                 <section className={styles.card}>
-                    <h1 className={`${styles.title} ${styles.iceCreamFont}`}>Sorveteria LovelyMatch</h1>
+                    <h1 className={styles.title}>Sorveteria LovelyMatch</h1>
                     <p className={styles.subtitle}>
                         Os melhores sabores, combinados com você. Explore nosso cardápio e
                         descubra novidades geladas!
