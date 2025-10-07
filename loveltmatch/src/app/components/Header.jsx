@@ -9,9 +9,10 @@ export default function Header() {
                 <Image
                     src="/Logo-lovelymatch.png"
                     alt="Logo LovelyMatch"
-                    width={200}
-                    height={100}
+                    width={100}
+                    height={50}
                 />
+                <div className={styles.title}>LovelyMatch</div>
                 <nav className={styles.nav}>
                     <Link href="/Home" className={styles.navLink}>Início</Link>
                     <Link href="/listagem" className={styles.navLink}>Sabores</Link>

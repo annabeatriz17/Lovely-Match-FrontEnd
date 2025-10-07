@@ -1,12 +1,27 @@
 .container {
     background: #ff6b9d;
+    height: 15%;
     width: 100%;
 }
 
 .headerContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.headerContainer img {
+    display: block;
+    margin: 0;
+}
+
+.title {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+    display: inline-block;
+    line-height: 1;
+    font-family: 'Cup of Coffee', cursive;
 }
 
 .nav {
@@ -14,6 +29,7 @@
     gap: 40px;
     align-items: center;
     padding: 15px;
+    margin-left: auto; /* empurra nav para a direita */
 }
 
 .navLink {
