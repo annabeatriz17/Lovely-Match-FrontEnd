@@ -8,6 +8,7 @@ export default function Sobre() {
     return (
         <main className={styles.container}>
             <Header />
+            <h1 className={styles.title1}>Conheça a LovelyMatch</h1>
             <section className={styles.content}>
                 <main className={styles.cards}>
                     <div className={styles.card1}>
