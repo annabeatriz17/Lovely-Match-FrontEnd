@@ -12,7 +12,9 @@ export default function Header() {
                     width={100}
                     height={50}
                 />
-                <div className={styles.title}>LovelyMatch</div>
+                <Link href="/Home" className={styles.title} aria-label="Ir para a página inicial">
+                    LovelyMatch
+                </Link>
                 <nav className={styles.nav}>
                     <Link href="/Home" className={styles.navLink}>Início</Link>
                     <Link href="/Listagem" className={styles.navLink}>Sabores</Link>

@@ -23,20 +23,6 @@
     padding: 48px 0;
 }
 
-.cards::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, #e04080 0%, #a872b6 100%);
-    border-radius: 8px;
-    opacity: 0.4;
-    z-index: 0;
-}
-
 .card,
 .card1 {
     position: absolute;
@@ -155,6 +141,19 @@
     padding: 14px 28px;
     border-radius: 28px;
     text-decoration: none;
+    box-shadow: 0 4px 14px rgba(224, 64, 128, 0.18);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    border: none;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+    min-width: 200px;
+    text-align: center;
+}
+
+.botao3:hover,
+.botao3:focus {
+    transform: translateY(-2px) scale(1.04);
     box-shadow: 0 4px 14px rgba(224, 64, 128, 0.18);
     font-size: 1rem;
     letter-spacing: 1px;
