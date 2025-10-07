@@ -102,17 +102,3 @@
   border-radius: 6px;
   border-left: 3px solid #ff6b9d;
 }
-
-@media (max-width: 768px) {
-  .campocreate {
-    padding: 1.25rem 1rem;
-    border-radius: 10px;
-  }
-  .title {
-    font-size: 1.9rem;
-  }
-  .form input,
-  .form button {
-    font-size: .9rem;
-  }
-}
