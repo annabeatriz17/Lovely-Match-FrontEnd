@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import styles from "./Home.module.css";
 import Header from "../components/Header";
