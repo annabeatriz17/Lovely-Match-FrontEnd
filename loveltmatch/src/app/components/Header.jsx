@@ -15,10 +15,10 @@ export default function Header() {
                 <div className={styles.title}>LovelyMatch</div>
                 <nav className={styles.nav}>
                     <Link href="/Home" className={styles.navLink}>Início</Link>
-                    <Link href="/listagem" className={styles.navLink}>Sabores</Link>
-                    <Link href="/sobre" className={styles.navLink}>Sobre Nós</Link>
-                    <Link href="/contato" className={styles.navLink}>Contato</Link>
-                    <Link href="/criacao" className={styles.ctaLink}>Criar Sabor</Link>
+                    <Link href="/Listagem" className={styles.navLink}>Sabores</Link>
+                    <Link href="/Sobre" className={styles.navLink}>Sobre Nós</Link>
+                    <Link href="/Contato" className={styles.navLink}>Contato</Link>
+                    <Link href="/Criacao" className={styles.ctaLink}>Criar Sabor</Link>
                 </nav>
             </div>
         </div>

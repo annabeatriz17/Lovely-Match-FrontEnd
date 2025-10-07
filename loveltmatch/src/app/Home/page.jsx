@@ -17,13 +17,13 @@ export default function Home() {
                     </p>
                     <div className={styles.links}>
                         <div className={styles.botoes}>
-                            <Link href="/listagem" className={styles.botao1}>
+                            <Link href="/Listagem" className={styles.botao1}>
                                 Ver Sabores
                             </Link>
-                            <Link href="/sobre" className={styles.botao2}>
+                            <Link href="/Sobre" className={styles.botao2}>
                                 Sobre Nós
                             </Link>
-                            <Link href="/contato" className={styles.botao3}>
+                            <Link href="/Contato" className={styles.botao3}>
                                 Contato
                             </Link>
                         </div>
